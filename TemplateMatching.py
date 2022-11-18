@@ -2,7 +2,7 @@ import cv2 as cv
 import numpy as np
 
 # Read Image
-inputPic = cv.imread("1.jpg")
+inputPic = cv.imread("King Domino dataset/Cropped and perspective corrected boards/1.jpg")
 
 # Converting the Image
 input_gray = cv.cvtColor(inputPic, cv.COLOR_BGR2GRAY)
