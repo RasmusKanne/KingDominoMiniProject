@@ -24,6 +24,6 @@ def slicing(image):
             slice = oriImage[refPoint[0][1]:refPoint[1][1], refPoint[0][0]:refPoint[1][0]]
             rows[z].append(slice)
 
-    return row1, row2, row3, row4, row5
+    return rows
 
 #row1, row2, row3, row4, row5 = slicing(input)
