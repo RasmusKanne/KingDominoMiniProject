@@ -1,17 +1,17 @@
 import cv2 as cv
 import numpy as np
 
-def FindValue(row):
+def FindValue(inputRows):
 
-    row1 = []
-    row2 = []
-    row3 = []
-    row4 = []
-    row5 = []
+    fv_row1 = []
+    fv_row2 = []
+    fv_row3 = []
+    fv_row4 = []
+    fv_row5 = []
 
-    rows = [row1, row2, row3, row4, row5]
-    for z in range(len(rows)):
-        for i in range(len(rows)):
-            rows[z].append(np.median(row[i]))
+    fv_rows = [fv_row1, fv_row2, fv_row3, fv_row4, fv_row5]
+    for z in range(len(fv_rows)):
+        for i in range(len(fv_rows)):
+            fv_rows[z].append(np.median(inputRows[z][i]))
 
-    return rows
+    return fv_rows
