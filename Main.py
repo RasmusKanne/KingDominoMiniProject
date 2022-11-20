@@ -1,10 +1,10 @@
 import cv2 as cv
 import numpy as np
 from Slicing import slicing
-from Categorization import FindValue
+from Categorization import FindValue, Categorize
 
 # Read Image
-inputPic = cv.imread("King Domino dataset/Cropped and perspective corrected boards/1.jpg")
+inputPic = cv.imread("King Domino dataset/Cropped and perspective corrected boards/10.jpg")
 
 # Convert and split HSV channels
 HSV = cv.cvtColor(inputPic, cv.COLOR_BGR2HSV)
@@ -26,9 +26,14 @@ h_rows_values = FindValue(h_rows)
 s_rows_values = FindValue(s_rows)
 v_rows_values = FindValue(v_rows)
 
+# Takes in the HSV values and puts them through if statements to categorize all terrain blocks into the 6 different types
+c_rows = Categorize(h_rows_values, s_rows_values, v_rows_values)
+
 print(f"Hue: {h_rows_values}")
 print(f"Saturation: {s_rows_values}")
 print(f"Value: {v_rows_values}")
 
-cv.imshow("1", v_rows[0][0])
+print(c_rows)
+
+cv.imshow("Input", inputPic)
 cv.waitKey(0)
