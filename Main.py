@@ -69,7 +69,7 @@ matching_result, matching_image = RunNonMaxima(inputPic, all_rects)
 # It will then return a list of rows that specifies how many crowns are on each slice
 cc_rows = crown_counting(inputPic, matching_result)
 
-# It then puts the rows from crown counting and puts it in a numpy array
+# We then put the rows from crown counting and create a numpy array
 cc_image = np.array([cc_rows[0],
                      cc_rows[1],
                      cc_rows[2],
