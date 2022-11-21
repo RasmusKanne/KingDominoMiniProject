@@ -6,7 +6,7 @@ from TemplateMatching import TemplateMatching, RunNonMaxima
 from GrassFire import grassfire
 
 # Read Image
-inputPic = cv.imread("King Domino dataset/Cropped and perspective corrected boards/3.jpg")
+inputPic = cv.imread("King Domino dataset/Cropped and perspective corrected boards/4.jpg")
 
 # Convert and split HSV channels
 HSV = cv.cvtColor(inputPic, cv.COLOR_BGR2HSV)

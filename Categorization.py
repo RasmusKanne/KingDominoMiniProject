@@ -34,6 +34,8 @@ def Categorize(h_values, s_values, v_values):
                     c_rows[z].append(2) # yellow
                 elif v_values[z][i] <= 65:
                     c_rows[z].append(3) # mine
+                elif s_values[z][i] <= 67:
+                    c_rows[z].append(0)  # castle
                 else:
                     c_rows[z].append(4) # wasteland
             else:
