@@ -3,9 +3,10 @@ import numpy as np
 from Slicing import slicing
 from Categorization import FindValue, Categorize
 from TemplateMatching import TemplateMatching, RunNonMaxima
+from GrassFire import grassfire
 
 # Read Image
-inputPic = cv.imread("King Domino dataset/Cropped and perspective corrected boards/1.jpg")
+inputPic = cv.imread("King Domino dataset/Cropped and perspective corrected boards/3.jpg")
 
 # Convert and split HSV channels
 HSV = cv.cvtColor(inputPic, cv.COLOR_BGR2HSV)
@@ -30,6 +31,16 @@ v_rows_values = FindValue(v_rows)
 # Takes in the HSV values
 # then puts them through if statements to categorize all terrain blocks into the 6 different types
 c_rows = Categorize(h_rows_values, s_rows_values, v_rows_values)
+
+# Taking all the categorized values and putting them in a 5x5 numpy array
+c_image = np.array([c_rows[0],
+                    c_rows[1],
+                    c_rows[2],
+                    c_rows[3],
+                    c_rows[4]], dtype=np.uint8)
+
+# Afterwards running a grassfire algorithm on the numpy array to find connecting blocks
+grassfire(c_image)
 
 # Finds amount of crowns using template matching
 # Runs it 4 times for all 4 states of rotation the crowns are able to be in
@@ -58,6 +69,7 @@ print(f"Saturation: {s_rows_values}")
 print(f"Value: {v_rows_values}")
 
 print(c_rows)
+print(c_image)
 
 cv.imshow("Input", inputPic)
 cv.imshow("template matching", matching_image)
