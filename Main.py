@@ -4,9 +4,10 @@ from Slicing import slicing
 from Categorization import FindValue, Categorize
 from TemplateMatching import TemplateMatching, RunNonMaxima
 from GrassFire import grassfire
+from CrownCounting import crown_counting
 
 # Read Image
-inputPic = cv.imread("King Domino dataset/Cropped and perspective corrected boards/4.jpg")
+inputPic = cv.imread("King Domino dataset/Cropped and perspective corrected boards/1.jpg")
 
 # Convert and split HSV channels
 HSV = cv.cvtColor(inputPic, cv.COLOR_BGR2HSV)
@@ -64,12 +65,24 @@ for i in range(len(rects)):
 # Then run through a non maxima supression algorithm to remove any overlapping results.
 matching_result, matching_image = RunNonMaxima(inputPic, all_rects)
 
+# Crown counting script takes the results of the template matching and matches them to the terrain blocks
+# It will then return a list of rows that specifies how many crowns are on each slice
+cc_rows = crown_counting(inputPic, matching_result)
+
+# It then puts the rows from crown counting and puts it in a numpy array
+cc_image = np.array([cc_rows[0],
+                     cc_rows[1],
+                     cc_rows[2],
+                     cc_rows[3],
+                     cc_rows[4]], dtype=np.uint8)
+
 print(f"Hue: {h_rows_values}")
 print(f"Saturation: {s_rows_values}")
 print(f"Value: {v_rows_values}")
 
 print(c_rows)
 print(c_image)
+print(cc_image)
 
 cv.imshow("Input", inputPic)
 cv.imshow("template matching", matching_image)
