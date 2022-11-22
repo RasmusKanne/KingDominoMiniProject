@@ -99,14 +99,4 @@ for filename in os.listdir(directory):
         result = CalculateScore(c_image, cc_image)
         resultImage = cv.putText(matching_image, F"Score: {result}", (175, 35), 1, 2, (0, 0, 255), 3, cv.LINE_AA)
 
-        #print(f"Hue: {h_rows_values}")
-        #print(f"Saturation: {s_rows_values}")
-        #print(f"Value: {v_rows_values}")
-
-        #print(c_rows)
-        #print(c_image)
-        #print(cc_image)
         print(f"{filename}:{result}")
-
-    #cv.imshow("template matching", resultImage)
-    #cv.waitKey(0)
