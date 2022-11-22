@@ -29,12 +29,12 @@ def Categorize(h_values, s_values, v_values):
         for i in range (len(h_values)):
             if h_values[z][i] >= 100:
                 c_rows[z].append(1) # blue
-            elif h_values[z][i] <= 30:
+            elif h_values[z][i] <= 32:
                 if s_values[z][i] >= 200:
                     c_rows[z].append(2) # yellow
-                elif v_values[z][i] <= 65:
+                elif v_values[z][i] <= 68:
                     c_rows[z].append(3) # mine
-                elif s_values[z][i] <= 67:
+                elif v_values[z][i] <= 92:
                     c_rows[z].append(0)  # castle
                 else:
                     c_rows[z].append(4) # wasteland

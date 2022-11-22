@@ -8,7 +8,7 @@ from CrownCounting import crown_counting
 from ScoreCalculation import CalculateScore
 
 # Read Image
-inputPic = cv.imread("King Domino dataset/Cropped and perspective corrected boards/3.jpg")
+inputPic = cv.imread("King Domino dataset/Cropped and perspective corrected boards/2.jpg")
 
 # Convert and split HSV channels
 HSV = cv.cvtColor(inputPic, cv.COLOR_BGR2HSV)
@@ -51,10 +51,11 @@ template_90 = cv.rotate(template, cv.ROTATE_90_CLOCKWISE)
 template_180 = cv.rotate(template_90, cv.ROTATE_90_CLOCKWISE)
 template_270 = cv.rotate(template_180, cv.ROTATE_90_CLOCKWISE)
 
-rect1 = TemplateMatching(inputPic, template, 0.55)
-rect2 = TemplateMatching(inputPic, template_90, 0.55)
-rect3 = TemplateMatching(inputPic, template_180, 0.55)
-rect4 = TemplateMatching(inputPic, template_270, 0.55)
+threshold = 0.55
+rect1 = TemplateMatching(inputPic, template, threshold)
+rect2 = TemplateMatching(inputPic, template_90, threshold)
+rect3 = TemplateMatching(inputPic, template_180, threshold)
+rect4 = TemplateMatching(inputPic, template_270, threshold)
 
 # Then all coordinates for crowns from the 4 template matches are put into 1 list
 rects = [rect1, rect2, rect3, rect4]
