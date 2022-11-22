@@ -108,5 +108,5 @@ for filename in os.listdir(directory):
         #print(cc_image)
         print(f"{filename}:{result}")
 
-        #cv.imshow("template matching", resultImage)
-        #cv.waitKey(0)
+    #cv.imshow("template matching", resultImage)
+    #cv.waitKey(0)

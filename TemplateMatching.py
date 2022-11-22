@@ -31,8 +31,8 @@ def TemplateMatching(processed, template, thresholdValue):
 def RunNonMaxima(image, rects):
     result = image.copy()
     pick = non_max_suppression(np.array(rects), 0.1)
-    resultAmount = len(pick)
-    print(resultAmount)
+    # resultAmount = len(pick)
+    # print(resultAmount)
 
     # loop over the final bounding boxes
     for (startX, startY, endX, endY) in pick:
