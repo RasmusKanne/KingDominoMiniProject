@@ -17,7 +17,7 @@ def ignite_pixel(image, coordinate, id):
     y, x = coordinate
     burn_queue = deque()
 
-    if image[y, x] == 1 or 2 or 3 or 4 or 5 or 6:
+    if image[y, x] == 0 or 1 or 2 or 3 or 4 or 5 or 6:
         current_category = image[y, x]
         burn_queue.append((y, x))
 

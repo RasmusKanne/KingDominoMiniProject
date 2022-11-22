@@ -5,9 +5,10 @@ from Categorization import FindValue, Categorize
 from TemplateMatching import TemplateMatching, RunNonMaxima
 from GrassFire import grassfire
 from CrownCounting import crown_counting
+from ScoreCalculation import CalculateScore
 
 # Read Image
-inputPic = cv.imread("King Domino dataset/Cropped and perspective corrected boards/1.jpg")
+inputPic = cv.imread("King Domino dataset/Cropped and perspective corrected boards/3.jpg")
 
 # Convert and split HSV channels
 HSV = cv.cvtColor(inputPic, cv.COLOR_BGR2HSV)
@@ -76,6 +77,10 @@ cc_image = np.array([cc_rows[0],
                      cc_rows[3],
                      cc_rows[4]], dtype=np.uint8)
 
+# The score is then calculated using the categorized image of ID's and the crown counting image
+result = CalculateScore(c_image, cc_image)
+resultImage = cv.putText(matching_image, F"Score: {result}", (175, 35), 1, 2, (0, 0, 255), 3, cv.LINE_AA)
+
 print(f"Hue: {h_rows_values}")
 print(f"Saturation: {s_rows_values}")
 print(f"Value: {v_rows_values}")
@@ -83,7 +88,7 @@ print(f"Value: {v_rows_values}")
 print(c_rows)
 print(c_image)
 print(cc_image)
+print(result)
 
-cv.imshow("Input", inputPic)
-cv.imshow("template matching", matching_image)
+cv.imshow("template matching", resultImage)
 cv.waitKey(0)
