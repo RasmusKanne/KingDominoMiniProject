@@ -9,7 +9,7 @@ from ScoreCalculation import CalculateScore
 
 directory = 'King Domino dataset/Cropped and perspective corrected boards'
 
-filename = "2.jpg"
+filename = "1.jpg"
 
 # Read Image
 inputPic = cv.imread(f"{directory}/{filename}")
